@@ -45,5 +45,9 @@ const BodyContainer = styled.div(({ theme }) => ({
   marginTop: HEADER_HEIGHT + theme.margin.x2,
   marginLeft: '20%',
   marginRight: '20%',
+  '@media (max-width: 768px)': {
+    marginLeft: theme.margin.x2,
+    marginRight: theme.margin.x2,
+  },
   justifyContent: 'space-between',
 }))
