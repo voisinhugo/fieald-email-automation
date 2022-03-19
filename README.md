@@ -2,7 +2,7 @@
 
 This project is used by the video team of the FIEALD association. The FIEALD is an open stage in Paris, happening every Sunday. The artists can command videos of their performance. We were looking for a way of sending emails more easily.
 
-It generates a static website to send emails faster.
+It generates a static website to send emails faster. The website is available here: [https://voisinhugo.github.io/fieald-email-automation/](https://voisinhugo.github.io/fieald-email-automation/)
 
 ## How to use
 
