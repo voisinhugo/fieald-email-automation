@@ -9,7 +9,7 @@ import { InputCard } from 'components/InputCard'
 import { SubmitCard } from 'components/SubmitCard'
 import { useAuthContext } from 'modules/auth/AuthContext'
 
-import { openEmail } from 'libs/openEmail'
+import { openPreFilledEmail } from './openPreFilledEmail'
 
 export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) => {
   const [fiealdEdition, setFiealdEdition] = useState('')
@@ -20,16 +20,17 @@ export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) =
   const { isLoggedIn } = useAuthContext()
 
   const openWrittenEmail = useCallback(() => {
-    const emailSubject = `Ton passage au ${fiealdEdition}e Fieald !`
-    const emailBody = `Bonjour ${artistName},\n\nLa vidéo de ton passage au ${fiealdEdition}e Fieald est téléchargeable sur ce lien : ${downloadLink}\n\nElle sera disponible une semaine sur le lien, mais nous te conseillons de la sauvegarder sur un support personnel.\n\nEn te souhaitant une bonne réception,\nL'équipe vidéo\n`
-    openEmail(artistEmail, emailSubject, emailBody)
+    openPreFilledEmail(fiealdEdition, artistName, artistEmail, downloadLink)
   }, [artistEmail, artistName, downloadLink, fiealdEdition])
 
-  const onArtistPreFill = (option: ArtistInfo) => {
-    setFiealdEdition(option.edition)
-    setArtistName(option.name)
-    setArtistEmail(option.email)
-  }
+  const onArtistPreFill = useCallback(
+    (option: ArtistInfo) => {
+      setFiealdEdition(option.edition)
+      setArtistName(option.name)
+      setArtistEmail(option.email)
+    },
+    [setFiealdEdition, setArtistName, setArtistEmail]
+  )
 
   return (
     <>
