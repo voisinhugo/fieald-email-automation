@@ -1,4 +1,4 @@
-import { groupBy } from '../../utils/groupBy'
+import { groupBy } from 'utils/groupBy'
 
 import { getFromRange } from './getFromRange'
 // import { mockedResponse } from './mockedResponse'

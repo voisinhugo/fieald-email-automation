@@ -1,5 +1,5 @@
 import { createContext, memo, useContext, useEffect, useMemo, useState } from 'react'
-import { initSheetAPI } from '../../api/sheets/initSheetAPI'
+import { initSheetAPI } from 'api/sheets/initSheetAPI'
 
 interface IAuthContext {
   isLoggedIn: boolean | null

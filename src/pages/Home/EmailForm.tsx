@@ -1,15 +1,15 @@
 import { useCallback, useState } from 'react'
 import styled from 'styled-components'
 
-import { loginWithGoogle } from '../../api/sheets/loginWithGoogle'
-import { Button } from '../../components/Button'
-import { Card, CARD_TYPE } from '../../components/Card'
-import { DownDownCard } from '../../components/DropDownCard'
-import { InputCard } from '../../components/InputCard'
-import { SubmitCard } from '../../components/SubmitCard'
+import { loginWithGoogle } from 'api/sheets/loginWithGoogle'
+import { Button } from 'components/Button'
+import { Card, CARD_TYPE } from 'components/Card'
+import { DownDownCard } from 'components/DropDownCard'
+import { InputCard } from 'components/InputCard'
+import { SubmitCard } from 'components/SubmitCard'
+import { useAuthContext } from 'modules/auth/AuthContext'
 
-import { openEmail } from '../../libs/openEmail'
-import { useAuthContext } from '../../modules/auth/AuthContext'
+import { openEmail } from 'libs/openEmail'
 
 export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) => {
   const [fiealdEdition, setFiealdEdition] = useState('')

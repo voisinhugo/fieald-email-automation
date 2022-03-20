@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { fetchArtistInfo } from '../../api/sheets/fetchArtistInfo'
-import { logoutWithGoogle } from '../../api/sheets/logoutWithGoogle'
 
-import { Button } from '../../components/Button'
-import { Header, HEADER_HEIGHT } from '../../components/Header'
+import { fetchArtistInfo } from 'api/sheets/fetchArtistInfo'
+import { logoutWithGoogle } from 'api/sheets/logoutWithGoogle'
+import { Button } from 'components/Button'
+import { Header, HEADER_HEIGHT } from 'components/Header'
+import { useAuthContext } from 'modules/auth/AuthContext'
 
 import { EmailForm } from './EmailForm'
-import { useAuthContext } from '../../modules/auth/AuthContext'
 
 export const Home = () => {
   const [artistOptions, setArtistOptions] = useState<ArtistInfo[]>()
