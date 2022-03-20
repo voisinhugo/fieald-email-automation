@@ -4,17 +4,15 @@ This project is used by the video team of the FIEALD association. The FIEALD is 
 
 It generates a static website to send emails faster. The website is available here: [https://voisinhugo.github.io/fieald-email-automation/](https://voisinhugo.github.io/fieald-email-automation/)
 
-## How to use
 
-### `yarn start`
+## Run
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Just clone the project and run:
+```sh
+yarn
+yarn start
+```
+You will find the app at [http://localhost:3000/fieald-email-automation](http://localhost:3000/fieald-email-automation). Enjoy!
 
 ## Credit
 
