@@ -24,7 +24,12 @@ export const fetchArtistInfo = async () => {
   // const table = mockedResponse
   if (!table) return
 
-  const cleanedTable = table.filter((row) => row.length === ROW_LENGTH)
+  const cleanedTable = table.filter((row) => {
+    const isRowComplete = row.length === ROW_LENGTH
+    const hasArtistBoughtAVideo = row[5] !== ''
+    return isRowComplete && hasArtistBoughtAVideo
+  })
+
   const artistInfoTable = cleanedTable.map(mapSheetDataToArtistInfo)
   const groupedByEdition = groupBy(artistInfoTable, 'edition')
 
