@@ -34,11 +34,7 @@ export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) =
           value={fiealdEdition}
           setValue={setFiealdEdition}
         />
-        <StyledInputCard
-          title="Prénom de l'artiste : "
-          value={artistName}
-          setValue={setArtistName}
-        />
+        <StyledInputCard title="Nom de l'artiste : " value={artistName} setValue={setArtistName} />
         <StyledInputCard
           title="E-mail de l'artiste : "
           value={artistEmail}
