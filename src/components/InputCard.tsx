@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components'
 
 type Props = {
@@ -8,10 +8,12 @@ type Props = {
 }
 
 export const InputCard: FunctionComponent<Props> = ({ title, value, setValue, ...props }) => {
+  const onChange = useCallback((event) => setValue(event.currentTarget.value), [setValue])
+
   return (
     <Container {...props}>
       <Title>{title}</Title>
-      <Input value={value} onChange={(event) => setValue(event.currentTarget.value)}></Input>
+      <Input value={value} onChange={onChange}></Input>
     </Container>
   )
 }

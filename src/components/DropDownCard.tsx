@@ -1,4 +1,4 @@
-import { FunctionComponent, useMemo } from 'react'
+import { FunctionComponent, useCallback, useMemo } from 'react'
 import styled from 'styled-components'
 import Select from 'react-select'
 
@@ -20,21 +20,31 @@ export const DownDownCard: FunctionComponent<Props> = ({ values, setValue }) => 
     [values]
   )
 
+  const onChange = useCallback(
+    (selectedOption: OptionType | null, { action }: { action: string }) => {
+      if (!selectedOption) return
+      if (action === 'select-option') {
+        setValue(selectedOption.value)
+      }
+    },
+    [setValue]
+  )
+
+  const dropDownStyles = useMemo(
+    () => ({
+      control: (provided: any) => ({ ...provided, width: 300 }),
+    }),
+    []
+  )
+
   return (
     <Container>
       <Title>Pré-remplir :</Title>
       <Select
         options={options}
         placeholder="Choisir un artiste..."
-        onChange={(selectedOption: OptionType | null, { action }: { action: string }) => {
-          if (!selectedOption) return
-          if (action === 'select-option') {
-            setValue(selectedOption.value)
-          }
-        }}
-        styles={{
-          control: (provided: any) => ({ ...provided, width: 300 }),
-        }}
+        onChange={onChange}
+        styles={dropDownStyles}
       />
     </Container>
   )
