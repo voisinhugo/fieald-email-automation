@@ -8,7 +8,7 @@ import { DownDownCard } from '../../components/DropDownCard'
 import { InputCard } from '../../components/InputCard'
 import { SubmitCard } from '../../components/SubmitCard'
 
-import { openEmail } from './utils'
+import { openEmail } from '../../libs/openEmail'
 import { useAuthContext } from '../../modules/auth/AuthContext'
 
 export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) => {
