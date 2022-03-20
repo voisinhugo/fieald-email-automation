@@ -3,14 +3,15 @@ import styled from 'styled-components'
 
 type Props = {
   title: string
+  value: string
   setValue: (value: string) => void
 }
 
-export const InputCard: FunctionComponent<Props> = ({ title, setValue }) => {
+export const InputCard: FunctionComponent<Props> = ({ title, value, setValue, ...props }) => {
   return (
-    <Container>
+    <Container {...props}>
       <Title>{title}</Title>
-      <Input onChange={(event) => setValue(event.currentTarget.value)}></Input>
+      <Input value={value} onChange={(event) => setValue(event.currentTarget.value)}></Input>
     </Container>
   )
 }

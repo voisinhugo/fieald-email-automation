@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'no-irregular-whitespace': 'off',
+    '@typescript-eslint/ban-ts-comment': 'warn',
   },
   settings: {
     react: {

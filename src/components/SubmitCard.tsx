@@ -2,13 +2,14 @@ import { FunctionComponent } from 'react'
 import styled from 'styled-components'
 
 type Props = {
+  buttonLabel: string
   onSubmit: () => void
 }
 
-export const SubmitCard: FunctionComponent<Props> = ({ onSubmit }) => {
+export const SubmitCard: FunctionComponent<Props> = ({ buttonLabel, onSubmit }) => {
   return (
     <Container>
-      <Button onClick={onSubmit}>Ouvrir le mail</Button>
+      <Button onClick={onSubmit}>{buttonLabel}</Button>
     </Container>
   )
 }
