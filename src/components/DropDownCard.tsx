@@ -1,8 +1,9 @@
 import { FunctionComponent, useCallback, useMemo } from 'react'
 import styled from 'styled-components'
-import Select from 'react-select'
+import Select, { CSSObjectWithLabel } from 'react-select'
 
 import { ArtistInfo } from '../api/sheets/fetchArtistInfo'
+import { Card, CARD_TYPE } from './Card'
 
 type Props = {
   values: ArtistInfo[]
@@ -32,13 +33,13 @@ export const DownDownCard: FunctionComponent<Props> = ({ values, setValue }) => 
 
   const dropDownStyles = useMemo(
     () => ({
-      control: (provided: any) => ({ ...provided, width: 300 }),
+      control: (provided: CSSObjectWithLabel) => ({ ...provided, width: 300 }),
     }),
     []
   )
 
   return (
-    <Container>
+    <Container cardType={CARD_TYPE.TOP}>
       <Title>Pré-remplir :</Title>
       <Select
         options={options}
@@ -50,17 +51,9 @@ export const DownDownCard: FunctionComponent<Props> = ({ values, setValue }) => 
   )
 }
 
-const Container = styled.div(({ theme }) => ({
-  display: 'flex',
-  paddingLeft: theme.margin.x4,
-  paddingRight: theme.margin.x4,
-  paddingTop: theme.margin.x2,
-  paddingBottom: theme.margin.x2,
-  backgroundColor: theme.color.white,
-  borderBottomLeftRadius: 4,
-  borderBottomRightRadius: 4,
+const Container = styled(Card)({
   alignItems: 'center',
-}))
+})
 
 const Title = styled.h3(({ theme }) => ({
   marginRight: theme.margin.x2,

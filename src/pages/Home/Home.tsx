@@ -4,8 +4,11 @@ import { ArtistInfo, fetchArtistInfo } from '../../api/sheets/fetchArtistInfo'
 
 import { initSheetAPI } from '../../api/sheets/initSheetAPI'
 import { loginWithGoogle } from '../../api/sheets/loginWithGoogle'
+import { logoutWithGoogle } from '../../api/sheets/logoutWithGoogle'
+import { Button } from '../../components/Button'
 import { Header, HEADER_HEIGHT } from '../../components/Header'
 import { SubmitCard } from '../../components/SubmitCard'
+
 import { EmailForm } from './EmailForm'
 
 export const Home = () => {
@@ -13,7 +16,7 @@ export const Home = () => {
   const [artistOptions, setArtistOptions] = useState<ArtistInfo[]>()
 
   useEffect(() => {
-    initSheetAPI(updateSignInStatus)
+    initSheetAPI(setIsLoggedIn)
   }, [])
 
   useEffect(() => {
@@ -26,13 +29,12 @@ export const Home = () => {
     }
   }, [isLoggedIn])
 
-  const updateSignInStatus = (loginStatus: boolean) => {
-    setIsLoggedIn(loginStatus)
-  }
-
   return (
     <Container>
-      <Header />
+      <Header>
+        <HeaderTitle>{"Envoi automatisé d'email"}</HeaderTitle>
+        {isLoggedIn ? <Button onClick={logoutWithGoogle}>Se déconnecter</Button> : null}
+      </Header>
       <BodyContainer>
         {isLoggedIn ? (
           <EmailForm artistOptions={artistOptions} />
@@ -53,6 +55,10 @@ const Container = styled.div(({ theme }) => ({
   flexGrow: 1,
   height: '100%',
   backgroundColor: theme.color.secondary,
+}))
+
+const HeaderTitle = styled.h1(({ theme }) => ({
+  color: theme.color.black,
 }))
 
 const BodyContainer = styled.div(({ theme }) => ({

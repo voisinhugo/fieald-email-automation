@@ -1,6 +1,8 @@
 import { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components'
 
+import { Card } from './Card'
+
 type Props = {
   title: string
   value: string
@@ -18,16 +20,9 @@ export const InputCard: FunctionComponent<Props> = ({ title, value, setValue, ..
   )
 }
 
-const Container = styled.div(({ theme }) => ({
-  display: 'flex',
-  paddingLeft: theme.margin.x4,
-  paddingRight: theme.margin.x4,
-  paddingTop: theme.margin.x2,
-  paddingBottom: theme.margin.x2,
+const Container = styled(Card)(({ theme }) => ({
   marginTop: theme.margin.x2,
   marginBottom: theme.margin.x2,
-  backgroundColor: theme.color.white,
-  borderRadius: 4,
   alignItems: 'center',
 }))
 

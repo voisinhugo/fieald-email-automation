@@ -19,7 +19,7 @@ export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) =
     openEmail(artistEmail, emailSubject, emailBody)
   }, [artistEmail, artistName, downloadLink, fiealdEdition])
 
-  const onArtistPrefill = (option: ArtistInfo) => {
+  const onArtistPreFill = (option: ArtistInfo) => {
     setFiealdEdition(option.edition)
     setArtistName(option.name)
     setArtistEmail(option.email)
@@ -27,7 +27,7 @@ export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) =
 
   return (
     <>
-      {artistOptions ? <DownDownCard values={artistOptions} setValue={onArtistPrefill} /> : null}
+      {artistOptions ? <DownDownCard values={artistOptions} setValue={onArtistPreFill} /> : null}
       <div>
         <StyledInputCard
           title="Édition du FIEALD : "

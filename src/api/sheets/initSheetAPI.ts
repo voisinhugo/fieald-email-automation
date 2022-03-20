@@ -4,11 +4,13 @@ import credentials from './credentials.json'
 const { client_id: CLIENT_ID, api_key: API_KEY } = credentials
 const SCOPE = 'https://www.googleapis.com/auth/spreadsheets'
 
-export const initSheetAPI = (callback) => {
+type LoginCallback = (isLoggedIn: boolean) => void
+
+export const initSheetAPI = (callback: LoginCallback) => {
   gapi.load('client:auth2', initClientFactory(callback))
 }
 
-const initClientFactory = (callback) => () => {
+const initClientFactory = (callback: LoginCallback) => () => {
   gapi.client
     .init({
       apiKey: API_KEY,
