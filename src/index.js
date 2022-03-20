@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Home } from './pages/Home'
-import './index.css'
 import { ThemeProvider } from 'styled-components'
-import { theme } from './theme'
-import { AuthWrapper } from './modules/auth/AuthContext'
+
+import { AuthWrapper } from 'modules/auth/AuthContext'
+import { Home } from 'pages/Home'
+import { theme } from 'theme'
+
+import './index.css'
 
 ReactDOM.render(
   <React.StrictMode>
