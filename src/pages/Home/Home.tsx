@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { ArtistInfo, fetchArtistInfo } from '../../api/sheets/fetchArtistInfo'
 
-import { initSheetAPI } from '../../api/sheets/initSheetAPI'
 import { loginWithGoogle } from '../../api/sheets/loginWithGoogle'
 import { logoutWithGoogle } from '../../api/sheets/logoutWithGoogle'
 import { Button } from '../../components/Button'
@@ -10,14 +9,11 @@ import { Header, HEADER_HEIGHT } from '../../components/Header'
 import { SubmitCard } from '../../components/SubmitCard'
 
 import { EmailForm } from './EmailForm'
+import { useLogin } from './useLogin'
 
 export const Home = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null)
   const [artistOptions, setArtistOptions] = useState<ArtistInfo[]>()
-
-  useEffect(() => {
-    initSheetAPI(setIsLoggedIn)
-  }, [])
+  const { isLoggedIn } = useLogin()
 
   useEffect(() => {
     const fetch = async () => {
