@@ -2,7 +2,6 @@ import { FunctionComponent, useCallback, useMemo } from 'react'
 import styled from 'styled-components'
 import Select, { CSSObjectWithLabel } from 'react-select'
 
-import { ArtistInfo } from '../api/sheets/fetchArtistInfo'
 import { Card, CARD_TYPE } from './Card'
 
 type Props = {

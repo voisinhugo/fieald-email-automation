@@ -5,12 +5,6 @@ import { getFromRange } from './getFromRange'
 
 const ROW_LENGTH = 14
 
-export type ArtistInfo = {
-  edition: string
-  name: string
-  email: string
-}
-
 const mapSheetDataToArtistInfo = (row: string[]): ArtistInfo => ({
   // the edition element is: XXXXe (DD/MM/YYYY), but we only want: XXXX
   edition: row[0].split('e')[0],

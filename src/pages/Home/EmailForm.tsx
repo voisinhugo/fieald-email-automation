@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 import styled from 'styled-components'
-import { ArtistInfo } from '../../api/sheets/fetchArtistInfo'
+
 import { loginWithGoogle } from '../../api/sheets/loginWithGoogle'
 import { Button } from '../../components/Button'
 import { Card, CARD_TYPE } from '../../components/Card'

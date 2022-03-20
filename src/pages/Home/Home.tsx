@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { ArtistInfo, fetchArtistInfo } from '../../api/sheets/fetchArtistInfo'
+import { fetchArtistInfo } from '../../api/sheets/fetchArtistInfo'
 import { logoutWithGoogle } from '../../api/sheets/logoutWithGoogle'
 
 import { Button } from '../../components/Button'
