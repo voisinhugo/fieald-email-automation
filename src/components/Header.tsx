@@ -4,7 +4,7 @@ export const HEADER_HEIGHT = 80
 
 export const Header = () => (
   <Container>
-    <Title>{"Envoi automatisé d'email :"}</Title>
+    <Title>{"Envoi automatisé d'email"}</Title>
   </Container>
 )
 
