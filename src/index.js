@@ -5,12 +5,15 @@ import './index.css'
 import { ThemeProvider } from 'styled-components'
 import { theme } from './theme'
 import reportWebVitals from './reportWebVitals'
+import { AuthWrapper } from './modules/auth/AuthContext'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Home />
-    </ThemeProvider>
+    <AuthWrapper>
+      <ThemeProvider theme={theme}>
+        <Home />
+      </ThemeProvider>
+    </AuthWrapper>
   </React.StrictMode>,
   document.getElementById('root')
 )

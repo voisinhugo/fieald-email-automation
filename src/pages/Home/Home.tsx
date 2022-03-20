@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { ArtistInfo, fetchArtistInfo } from '../../api/sheets/fetchArtistInfo'
-
-import { loginWithGoogle } from '../../api/sheets/loginWithGoogle'
 import { logoutWithGoogle } from '../../api/sheets/logoutWithGoogle'
+
 import { Button } from '../../components/Button'
 import { Header, HEADER_HEIGHT } from '../../components/Header'
-import { SubmitCard } from '../../components/SubmitCard'
 
 import { EmailForm } from './EmailForm'
-import { useLogin } from './useLogin'
+import { useAuthContext } from '../../modules/auth/AuthContext'
 
 export const Home = () => {
   const [artistOptions, setArtistOptions] = useState<ArtistInfo[]>()
-  const { isLoggedIn } = useLogin()
+  const { isLoggedIn } = useAuthContext()
 
   useEffect(() => {
     const fetch = async () => {
@@ -32,14 +30,7 @@ export const Home = () => {
         {isLoggedIn ? <Button onClick={logoutWithGoogle}>Se déconnecter</Button> : null}
       </Header>
       <BodyContainer>
-        {isLoggedIn ? (
-          <EmailForm artistOptions={artistOptions} />
-        ) : (
-          <>
-            <div />
-            <SubmitCard buttonLabel="Se connecter" onSubmit={loginWithGoogle} />
-          </>
-        )}
+        <EmailForm artistOptions={artistOptions} />
       </BodyContainer>
     </Container>
   )

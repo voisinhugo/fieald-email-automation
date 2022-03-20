@@ -1,17 +1,23 @@
 import { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import { ArtistInfo } from '../../api/sheets/fetchArtistInfo'
+import { loginWithGoogle } from '../../api/sheets/loginWithGoogle'
+import { Button } from '../../components/Button'
+import { Card, CARD_TYPE } from '../../components/Card'
 import { DownDownCard } from '../../components/DropDownCard'
 import { InputCard } from '../../components/InputCard'
 import { SubmitCard } from '../../components/SubmitCard'
 
 import { openEmail } from './utils'
+import { useAuthContext } from '../../modules/auth/AuthContext'
 
 export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) => {
   const [fiealdEdition, setFiealdEdition] = useState('')
   const [artistName, setArtistName] = useState('')
   const [artistEmail, setArtistEmail] = useState('')
   const [downloadLink, setDownloadLink] = useState('')
+
+  const { isLoggedIn } = useAuthContext()
 
   const openWrittenEmail = useCallback(() => {
     const emailSubject = `Ton passage au ${fiealdEdition}e Fieald !`
@@ -27,7 +33,13 @@ export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) =
 
   return (
     <>
-      {artistOptions ? <DownDownCard values={artistOptions} setValue={onArtistPreFill} /> : null}
+      {artistOptions && isLoggedIn ? (
+        <DownDownCard values={artistOptions} setValue={onArtistPreFill} />
+      ) : (
+        <LoginButtonContainer cardType={CARD_TYPE.TOP}>
+          <Button onClick={loginWithGoogle}>Se connecter</Button>
+        </LoginButtonContainer>
+      )}
       <div>
         <StyledInputCard
           title="Édition du FIEALD : "
@@ -50,6 +62,10 @@ export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) =
     </>
   )
 }
+
+const LoginButtonContainer = styled(Card)({
+  justifyContent: 'center',
+})
 
 const StyledInputCard = styled(InputCard)(({ theme }) => ({
   marginTop: theme.margin.x2,
