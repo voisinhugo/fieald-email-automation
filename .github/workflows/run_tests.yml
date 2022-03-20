@@ -1,0 +1,20 @@
+name: run_tests_ci
+
+on:
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 16
+    - name: Tests
+      run: |
+        yarn
+        yarn eslint .
+        yarn test --watchAll=false
