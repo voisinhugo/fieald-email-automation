@@ -44,11 +44,6 @@ export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) =
         </LoginButtonContainer>
       )}
       <div>
-        <StyledInputCard
-          title="Édition du FIEALD : "
-          value={fiealdEdition}
-          setValue={setFiealdEdition}
-        />
         <StyledInputCard title="Nom de l'artiste : " value={artistName} setValue={setArtistName} />
         <StyledInputCard
           title="E-mail de l'artiste : "
