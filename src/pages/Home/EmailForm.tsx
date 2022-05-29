@@ -13,6 +13,7 @@ import { openPreFilledEmail } from './openPreFilledEmail'
 
 export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) => {
   const [fiealdEdition, setFiealdEdition] = useState('')
+  const [fiealdEditionDate, setFiealdEditionDate] = useState('')
   const [artistName, setArtistName] = useState('')
   const [artistEmail, setArtistEmail] = useState('')
   const [downloadLink, setDownloadLink] = useState('')
@@ -20,12 +21,13 @@ export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) =
   const { isLoggedIn } = useAuthContext()
 
   const openWrittenEmail = useCallback(() => {
-    openPreFilledEmail(fiealdEdition, artistName, artistEmail, downloadLink)
-  }, [artistEmail, artistName, downloadLink, fiealdEdition])
+    openPreFilledEmail(fiealdEdition, fiealdEditionDate, artistName, artistEmail, downloadLink)
+  }, [artistEmail, fiealdEditionDate, artistName, downloadLink, fiealdEdition])
 
   const onArtistPreFill = useCallback(
     (option: ArtistInfo) => {
       setFiealdEdition(option.edition)
+      setFiealdEditionDate(option.editionDate)
       setArtistName(option.name)
       setArtistEmail(option.email)
     },
