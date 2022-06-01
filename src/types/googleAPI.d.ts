@@ -25,6 +25,11 @@ type GetAuthInstanceReturnType = {
   isSignedIn: GetAuthInstanceIsSignedIn
   signIn: () => void
   signOut: () => void
+  currentUser: { get: () => GoogleUser }
 }
+
+type GoogleUser = { getBasicProfile: () => BasicProfile }
+
+type BasicProfile = { getEmail: () => string }
 
 type GetAuthInstanceIsSignedIn = { listen: (callback: LoginCallback) => void; get: () => boolean }
