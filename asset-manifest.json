@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/fieald-email-automation/static/css/main.4dfd2977.css",
-    "main.js": "/fieald-email-automation/static/js/main.f619900f.js",
+    "main.js": "/fieald-email-automation/static/js/main.d86001c2.js",
     "index.html": "/fieald-email-automation/index.html",
     "main.4dfd2977.css.map": "/fieald-email-automation/static/css/main.4dfd2977.css.map",
-    "main.f619900f.js.map": "/fieald-email-automation/static/js/main.f619900f.js.map"
+    "main.d86001c2.js.map": "/fieald-email-automation/static/js/main.d86001c2.js.map"
   },
   "entrypoints": [
     "static/css/main.4dfd2977.css",
-    "static/js/main.f619900f.js"
+    "static/js/main.d86001c2.js"
   ]
 }
