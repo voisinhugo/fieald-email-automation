@@ -15,7 +15,7 @@ export const mapSheetDataToArtistInfo = (row: string[]): ArtistInfo | undefined 
   return {
     edition,
     editionDate: `${day.padStart(2, '0')}/${month.padStart(2, '0')}`,
-    name: row[2],
+    name: row[2] || row[1],
     email: row[13],
   }
 }
