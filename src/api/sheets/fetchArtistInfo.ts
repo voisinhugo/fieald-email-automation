@@ -3,7 +3,7 @@ import { groupBy } from 'utils/groupBy'
 import { getFromRange } from './getFromRange'
 // import { mockedResponse } from './mockedResponse'
 
-const ROW_LENGTH = 14
+const ROW_LENGTH = 13
 
 export const mapSheetDataToArtistInfo = (row: string[]): ArtistInfo | undefined => {
   // the edition element is: XXXXe (DD/MM/YYYY)
@@ -16,13 +16,13 @@ export const mapSheetDataToArtistInfo = (row: string[]): ArtistInfo | undefined 
     edition,
     editionDate: `${day.padStart(2, '0')}/${month.padStart(2, '0')}`,
     name: row[2] || row[1],
-    email: row[13],
+    email: row[12],
   }
 }
 
 export const fetchArtistInfo = async (accessToken: string) => {
   console.log('Call to GoogleSheet to fetch artist info.')
-  const table = await getFromRange('Commandes 2022-2023!A2%3AN500', accessToken)
+  const table = await getFromRange('Commandes 2022-2023!A2%3AM500', accessToken)
   // const table = mockedResponse
   if (!table) return
 
