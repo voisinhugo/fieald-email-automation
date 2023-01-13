@@ -4,14 +4,15 @@ This project is used by the video team of the [FIEALD](https://www.fieald.com/) 
 
 It generates a static website to send emails faster. The website is available here: [https://voisinhugo.github.io/fieald-email-automation/](https://voisinhugo.github.io/fieald-email-automation/)
 
-
 ## Run
 
 Just clone the project and run:
+
 ```sh
 yarn
 yarn start
 ```
+
 You will find the app at [http://localhost:3000/fieald-email-automation](http://localhost:3000/fieald-email-automation). Enjoy!
 
 ## Credit
