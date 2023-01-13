@@ -20,9 +20,9 @@ export const mapSheetDataToArtistInfo = (row: string[]): ArtistInfo | undefined 
   }
 }
 
-export const fetchArtistInfo = async () => {
+export const fetchArtistInfo = async (accessToken: string) => {
   console.log('Call to GoogleSheet to fetch artist info.')
-  const table = await getFromRange('Commandes 2022-2023!A2%3AN500')
+  const table = await getFromRange('Commandes 2022-2023!A2%3AN500', accessToken)
   // const table = mockedResponse
   if (!table) return
 

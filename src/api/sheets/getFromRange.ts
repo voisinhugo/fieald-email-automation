@@ -2,7 +2,6 @@ import axios from 'axios'
 import credentials from './credentials.json'
 
 const spreadsheetId = credentials.spreadsheet_id
-const api_key = credentials.api_key
 
 enum Dimension {
   ROWS = 'ROWS',
@@ -15,10 +14,12 @@ interface GetFromRangeResponse {
   values: string[][]
 }
 
-export const getFromRange = async (range: string) => {
-  const URL = `https://content-sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?majorDimension=ROWS&key=${api_key}`
+export const getFromRange = async (range: string, accessToken: string) => {
+  const URL = `https://content-sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?majorDimension=ROWS`
   try {
-    const res = await axios.get<GetFromRangeResponse>(URL)
+    const res = await axios.get<GetFromRangeResponse>(URL, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    })
     return res.data.values
   } catch (err) {
     console.error(err)

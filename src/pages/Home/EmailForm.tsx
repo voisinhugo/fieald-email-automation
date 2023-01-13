@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react'
 import styled from 'styled-components'
 
-import { loginWithGoogle } from 'api/sheets/loginWithGoogle'
 import { Button } from 'components/Button'
 import { Card, CARD_TYPE } from 'components/Card'
 import { DownDownCard } from 'components/DropDownCard'
@@ -12,6 +11,7 @@ import { useAuthContext } from 'modules/auth/AuthContext'
 import { openPreFilledEmail } from './openPreFilledEmail'
 
 export const EmailForm = ({ artistOptions }: { artistOptions?: ArtistInfo[] }) => {
+  const { loginWithGoogle } = useAuthContext()
   const [fiealdEdition, setFiealdEdition] = useState('')
   const [fiealdEditionDate, setFiealdEditionDate] = useState('')
   const [artistName, setArtistName] = useState('')

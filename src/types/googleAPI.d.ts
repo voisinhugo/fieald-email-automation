@@ -1,35 +1,18 @@
-declare let gapi: GoogleAPI
+declare let google: GoogleAPI
 
-type GoogleAPI = { auth2: Auth2; client: Client; load: Load }
+type GoogleAPI = { accounts: Accounts }
 
-type Client = {
-  init: (props: ClientInitProps) => Promise<void>
+type Accounts = { oauth2: OAuth2 }
+
+type OAuth2 = {
+  initTokenClient: (args: {
+    client_id: string
+    scope: string
+    callback: InitTokenClientCallback
+  }) => OAuth2Client
+  revoke: (access_token: string, callback: () => void) => void
 }
 
-type ClientInitProps = {
-  apiKey: string
-  clientId: string
-  scope: string
-  discoveryDocs: string[]
-}
+type InitTokenClientCallback = (tokenResponse: { access_token: string }) => void
 
-type LoginCallback = (isLoggedIn: boolean) => void
-
-type Load = (authMethod: string, callback: LoginCallback) => void
-
-type Auth2 = {
-  getAuthInstance: () => GetAuthInstanceReturnType
-}
-
-type GetAuthInstanceReturnType = {
-  isSignedIn: GetAuthInstanceIsSignedIn
-  signIn: () => void
-  signOut: () => void
-  currentUser: { get: () => GoogleUser }
-}
-
-type GoogleUser = { getBasicProfile: () => BasicProfile }
-
-type BasicProfile = { getEmail: () => string }
-
-type GetAuthInstanceIsSignedIn = { listen: (callback: LoginCallback) => void; get: () => boolean }
+type OAuth2Client = { requestAccessToken: () => void }

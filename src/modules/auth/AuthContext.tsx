@@ -1,14 +1,15 @@
 import { createContext, memo, useContext, useEffect, useMemo, useState } from 'react'
-import { initSheetAPI } from 'api/sheets/initSheetAPI'
+import { getOAuthClient } from 'api/OAuth/getOAuthClient'
 
 interface IAuthContext {
+  accessToken?: string
   isLoggedIn: boolean | null
-  setIsLoggedIn: (isLoggedIn: boolean) => void
+  loginWithGoogle?: () => void
+  logoutWithGoogle?: () => void
 }
 
 const AuthContext = createContext<IAuthContext>({
   isLoggedIn: null,
-  setIsLoggedIn: () => undefined,
 })
 
 export function useAuthContext(): IAuthContext {
@@ -16,12 +17,28 @@ export function useAuthContext(): IAuthContext {
 }
 
 export const AuthWrapper = memo(function AuthWrapper({ children }: { children: JSX.Element }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [accessToken, setAccessToken] = useState<string>()
+  const [client, setClient] = useState<OAuth2Client>()
 
   useEffect(() => {
-    initSheetAPI(setIsLoggedIn)
-  }, [setIsLoggedIn])
+    const client = getOAuthClient((tokenResponse) => {
+      setAccessToken(tokenResponse.access_token)
+    })
+    setClient(client)
+  }, [])
 
-  const value = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn, setIsLoggedIn])
+  const value = useMemo(
+    () => ({
+      accessToken,
+      isLoggedIn: !!accessToken,
+      loginWithGoogle: () => {
+        client?.requestAccessToken()
+      },
+      logoutWithGoogle: () => {
+        accessToken && google.accounts.oauth2.revoke(accessToken, () => setAccessToken(undefined))
+      },
+    }),
+    [accessToken, client]
+  )
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 })
